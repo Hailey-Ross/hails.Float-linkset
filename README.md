@@ -34,7 +34,7 @@ The script:
 - Randomizes the float period each cycle for natural motion  
 - Continuously returns to the same “home” position  
 
-Because it uses local positioning, the prim will not drift over time and will always return to its original placement relative to the root prim.
+###### ✏️ Because it uses local positioning, the prim will not drift over time and will always return to its original placement relative to the root prim.
 
 ---
 
