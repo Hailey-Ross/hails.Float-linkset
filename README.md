@@ -7,7 +7,9 @@ This script creates a smooth, natural floating motion using local positioning to
 ---
 
 ### 🖼️ Preview
-![Preview](https://assets.hails.cc/i/sl/hails-float-example.gif)
+[Animated Preview](https://assets.hails.cc/i/sl/hails-float-example.gif)  
+![Preview](https://github.com/user-attachments/assets/5928a865-f380-4cd3-8422-3625b8b65fe0)
+
 
 ---
 
