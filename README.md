@@ -6,12 +6,12 @@ This script creates a smooth, natural floating motion using local positioning to
 
 ---
 
-### Preview
-![Preview](https://assets.hails.cc/i/sl/hails.float-example.gif)
+### 🖼️ Preview
+![Preview](https://assets.hails.cc/i/sl/hails-float-example.gif)
 
 ---
 
-## Features
+## 🗒️ Features
 
 - Smooth sine-wave floating motion  
 - Randomized float period per cycle (default: 9-15 seconds)  
@@ -22,7 +22,7 @@ This script creates a smooth, natural floating motion using local positioning to
 
 ---
 
-## How It Works
+## 📚 How It Works
 
 The script:
 
@@ -35,7 +35,7 @@ Because it uses local positioning, the prim will not drift over time and will al
 
 ---
 
-## Requirements
+## ✔️Requirements
 
 - Object must be linked  
 - Script must be placed in a child prim  
@@ -44,7 +44,7 @@ Because it uses local positioning, the prim will not drift over time and will al
 
 ---
 
-## Installation
+## 💻Installation
 
 1. Link your object normally  
 2. Ensure the prim you want to float is not the root prim  
@@ -55,71 +55,7 @@ The prim will immediately begin floating.
 
 ---
 
-## Floating Script
-
-```lsl
-float AMPLITUDE  = 0.10;  // meters up/down
-float MIN_PERIOD = 9.0;   // seconds
-float MAX_PERIOD = 15.0;  // seconds
-float TICK       = 0.05;  // timer step
-
-vector baseLocal;
-float  t0;
-float  period;
-
-float randomPeriod()
-{
-    return MIN_PERIOD + llFrand(MAX_PERIOD - MIN_PERIOD);
-}
-
-startFloat()
-{
-    // Capture a fixed local "home" position
-    baseLocal = llGetLocalPos();
-
-    period = randomPeriod();
-    t0 = llGetTime();
-    llSetTimerEvent(TICK);
-}
-
-default
-{
-    state_entry()
-    {
-        startFloat();
-    }
-
-    on_rez(integer start_param)
-    {
-        llResetScript();
-    }
-
-    timer()
-    {
-        float t = llGetTime() - t0;
-        float phase = (t / period) * TWO_PI;
-
-        // Pick a new random period each full cycle
-        if (phase >= TWO_PI)
-        {
-            period = randomPeriod();
-            t0 = llGetTime();
-            phase = 0.0;
-        }
-
-        float offsetZ = llSin(phase) * AMPLITUDE;
-        vector targetLocal = baseLocal + <0.0, 0.0, offsetZ>;
-
-        llSetLinkPrimitiveParamsFast(LINK_THIS, [
-            PRIM_POS_LOCAL, targetLocal
-        ]);
-    }
-}
-```
-
----
-
-## Customization
+## 🎨Customization
 
 - Adjust AMPLITUDE to change float height  
 - Adjust MIN_PERIOD and MAX_PERIOD for slower or faster motion  
@@ -127,7 +63,7 @@ default
 
 ---
 
-## Notes & Limitations
+## 🛑Notes & Limitations
 
 - The script must be in a child prim  
 - Root prim local position cannot be animated  
@@ -136,6 +72,6 @@ default
 
 ---
 
-## License
+## 🪪License
 
 Use freely. Attribution appreciated but not required.
